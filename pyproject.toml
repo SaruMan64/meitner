@@ -1,0 +1,99 @@
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "meitner"
+#dynamic = ["version"]
+version = "0.0.1"
+description = "Meitner is a Python package inspired by physicist Lise Meitner. It provides tools for implementing machine learning, deep learning, and natural language processing techniques, designed to be both educational and practical."
+readme = "README.md"
+license = { file = "LICENSE" }
+authors = [{ name = "Yeté Labarca" }]
+maintainers = [{ name = "Yeté Labarca" }]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+requires-python = ">=3.10"
+dependencies = [
+    "numpy >= 1.24.0",
+    "pandas >= 2.0.0",
+    "scikit-learn >= 1.3.0",
+    "tensorflow >= 2.16.0",
+    "torch >= 2.0.0",
+    "transformers >= 4.28.0",
+    "pydantic >= 2.7.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "black >= 24.4.2",
+    "isort >= 5.13.2",
+    "flake8 >= 7.0.0",
+    "autoflake >= 2.3.1",
+    "autopep8 >= 2.1.0",
+    "pylint >= 2.17.5",
+    "pydocstyle >= 6.1.1",
+    "mypy >= 1.10.0",
+    "pandas-stubs >= 1.2.0.39",
+    "pytest >= 7.4.2",
+    "pytest-cov >= 4.0.0",
+    "tox >= 4.6.0",
+    "sphinx >= 7.3.7",
+    "sphinx-rtd-theme >= 1.3.0",
+    "myst-parser >= 1.0.0",
+    "pre-commit >= 3.7.1",
+    "coverage >= 7.2.0",
+    "ipython >= 8.14.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/SaruMan64/meitner"
+Documentation = "https://github.com/SaruMan64/meitner"
+Repository = "https://github.com/SaruMan64/meitner"
+Issues = "https://github.com/SaruMan64/meitner/issues"
+#Changelog = "https://github.com/me/spam/blob/master/CHANGELOG.md"
+
+[tool.black]
+line-length = 100
+
+[tool.flake8]
+max-line-length = 100
+docstring-convention = "numpy"
+
+[tool.isort]
+profile = "black"
+
+[tool.autoflake]
+remove-all-unused-imports = true
+expand-star-imports = true
+remove-unused-variables = true
+remove-duplicate-keys = true
+
+[tool.mypy]
+files = "src/**/*.py"
+disable_error_code = "import-untyped"
+ignore_missing_imports = true
+
+[tool.pylint.main]
+init-hook = 'import sys; sys.path.append("/mnt/c/Users/yetea/github/meitner")'
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "--cov=meitner --cov-report=term-missing"
+testpaths = ["tests"]
+
+[tool.coverage.run]
+branch = true
+source = ["meitner"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
+
+[tool.setuptools.packages.find]
+where = ["src"]
